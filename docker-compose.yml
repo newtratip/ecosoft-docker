@@ -29,6 +29,7 @@ services:
     image: nginx
     volumes:
       - /nginx/config:/etc/nginx/conf.d
+      - /nginx/log:/var/log/nginx
     ports:
       - "80:80"
     environment:
