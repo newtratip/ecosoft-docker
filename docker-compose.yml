@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   web:
     image: newtratip/odoo:8.0
@@ -33,5 +33,5 @@ services:
     ports:
       - "80:80"
     environment:
-      - NGINX_HOST=localhost
+      - NGINX_HOST=127.0.0.1
       - NGINX_PORT=80
