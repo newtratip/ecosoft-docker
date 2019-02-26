@@ -9,7 +9,7 @@ services:
     environment:
       - HOST=db
       - PORT=5432
-      - POSTGRES_USER=odoo
+      - USER=odoo
       - PASSWORD=odoo
     volumes:
       - /odoo/addons:/mnt/extra-addons
@@ -30,7 +30,7 @@ services:
     volumes:
       - /nginx/config:/etc/nginx/conf.d
     ports:
-      - "8080:80"
+      - "80:80"
     environment:
-      - NGINX_HOST=127.0.0.1
+      - NGINX_HOST=localhost
       - NGINX_PORT=80
