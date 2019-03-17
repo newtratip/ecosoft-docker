@@ -48,4 +48,6 @@ services:
       PGADMIN_DEFAULT_EMAIL=user@domain.com
       PGADMIN_DEFAULT_PASSWORD=password
     volumes:
+      - /pgadmin/config:/pgadmin4
+      - /pgadmin/log:/var/log/pgadmin
       - /pgadmin/data:/var/lib/pgadmin
