@@ -26,9 +26,9 @@ echo "=============== Generate certificate signing request ==============="
 openssl req -subj "/CN=$HOST" -sha256 -new -key server-key.pem -out server.csr
 echo ""
 
-# Allow connection using 10.10.10.20 and 127.0.0.1
+# Allow connection using host ip
 echo "=============== Generate extfile ==============="
-echo subjectAltName = DNS:$HOST,IP:10.10.10.20,IP:127.0.0.1 >> extfile.cnf
+echo subjectAltName = DNS:$HOST,IP:$HOST >> extfile.cnf
 
 # Set the docker daemon key’s extended usage attributes to be used only for server authentication
 echo extendedKeyUsage = serverAuth >> extfile.cnf
