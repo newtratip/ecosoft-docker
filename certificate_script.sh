@@ -61,3 +61,5 @@ echo "=============== Generate the signed certificate ==============="
 openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile-client.cnf
 
 sudo mkdir /.cert && sudo cp ../cert/{ca,server-cert,server-key,cert,key}.pem /.cert && sudo rm -r ../cert
+
+# Reference >> https://docs.docker.com/engine/security/https/
