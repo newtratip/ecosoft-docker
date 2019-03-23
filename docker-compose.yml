@@ -1,52 +1,10 @@
 version: "2"
 services:
-  db:
-    image: postgres:9.6
+  portainer:
+    image: portainer/portainer
     restart: always
     ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata
+      - "9000:9000"
     volumes:
-      - /postgresql/data:/var/lib/postgresql/data/pgdata
-  web:
-    image: newtratip/odoo:8.0
-    restart: always
-    ports:
-      - "8069:8069"
-    environment:
-      - HOST=db
-      - PORT=5432
-      - USER=odoo
-      - PASSWORD=odoo
-    volumes:
-      - /odoo/addons:/mnt/extra-addons
-      - /odoo/config:/etc/odoo
-      - /odoo/log:/var/log/odoo
-      - /odoo/data:/var/lib/odoo
-    depends_on:
-      - db
-  nginx:
-    image: nginx
-    restart: always
-    ports:
-      - "80:80"
-    environment:
-      - NGINX_HOST=127.0.0.1
-      - NGINX_PORT=80      
-    volumes:
-      - /nginx/config:/etc/nginx/conf.d
-      - /nginx/log:/var/log/nginx
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    ports:
-      - "1000:80"
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=user@domain.com
-      - PGADMIN_DEFAULT_PASSWORD=password
-    volumes:
-      - /pgadmin/data:/var/lib/pgadmin
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer:/data
