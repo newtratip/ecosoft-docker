@@ -2,6 +2,7 @@ version: "2"
 services:
   postgres:
     image: postgres:9.5
+    container_name: postgres
     restart: always
     ports:
       - "5432:5432"
@@ -14,6 +15,7 @@ services:
       - /postgresql/data:/var/lib/postgresql/data/pgdata
   odoo:
     image: newtratip/odoo:7.0
+    container_name: odoo
     command: start
     restart: always
     ports:
@@ -29,6 +31,7 @@ services:
       - postgres:db    
   nginx:
     image: nginx
+    container_name: nginx
     restart: always
     ports:
       - "80:80"
@@ -40,6 +43,7 @@ services:
       - /nginx/log:/var/log/nginx
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     restart: always
     ports:
       - "1000:80"
