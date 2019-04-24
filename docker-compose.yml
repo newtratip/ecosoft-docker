@@ -27,6 +27,7 @@ services:
       - /odoo/addons:/opt/odoo/additional_addons
       - /odoo/data/filestore:/opt/odoo/sources/odoo/openerp/filestore
       - /odoo/etc:/opt/odoo/etc
+      - /odoo/data/.postgresql:/opt/odoo/.postgresql
     links:
       - postgres:db    
   nginx:
